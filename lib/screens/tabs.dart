@@ -1,5 +1,4 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers
-
 import 'package:flutter/material.dart';
 import 'package:meals_app/models/meal.dart';
 import 'package:meals_app/screens/categories.dart';
@@ -65,14 +64,15 @@ class _TabsScreen extends State<TabsScreen> {
       activePageTitle = 'Favourites';
     }
 
-    void _setScreen(String identifier) {
+    void _setScreen(String identifier) async {
       Navigator.of(context).pop();
       if (identifier == 'filters') {
-        Navigator.of(context).push(
+        final result = await Navigator.of(context).push<Map<Filter, bool>>(
           MaterialPageRoute(
             builder: (ctx) => const FiltersScreen(),
           ),
         );
+        print(result);
       }
     }
 
